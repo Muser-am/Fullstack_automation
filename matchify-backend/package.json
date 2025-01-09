@@ -21,6 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "test:": "mocha --reporter mocha-junit-reporter --reporter-options mochaFile=./test-reports/backend-test-report.xml",
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
     "eject": "react-scripts eject",
     "wdio": "wdio run ./wdio.conf.ts"
@@ -44,6 +45,10 @@
     ]
   },
   "devDependencies": {
-    "@wdio/cli": "^9.5.2"
+    "@wdio/cli": "^9.5.2",
+    "jest": "^27.5.1",
+    "jest-junit": "^16.0.0",
+    "mocha": "^11.0.1",
+    "mocha-junit-reporter": "^2.2.1"
   }
 }
