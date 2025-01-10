@@ -1,24 +1,28 @@
 {
-  "name": "matchify-frontend",
-  "version": "0.1.0",
-  "private": true,
+  "scripts": {
+    "start": "react-scripts start"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.x.x",
+    "jest": "^27.5.1",
+    "jest-junit": "^16.0.0"
+  },
+  "jest": {
+    "reporters": [
+      "default",
+      [
+        "jest-junit",
+        {
+          "outputDirectory": "./test-reports",
+          "outputName": "frontend-test-report.xml"
+        }
+      ]
+    ]
+  },
   "dependencies": {
-    "cra-template": "1.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-scripts": "5.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "react-scripts": "^5.0.1"
   },
   "browserslist": {
     "production": [
@@ -31,5 +35,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "./"
 }
