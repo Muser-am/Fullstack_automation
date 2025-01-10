@@ -15,31 +15,31 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Setup Node.js for the frontend (assuming the frontend uses Node.js)
+      # Setup Node.js for the frontend
       - name: Setup Node.js for frontend
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Specify the Node.js version
+          node-version: '16'  # Adjust to your Node.js version
 
       # Install frontend dependencies
       - name: Install frontend dependencies
-        working-directory: ./frontend  # Adjust to your frontend folder
+        working-directory: ./matchify-frontend
         run: npm install
 
-      # Setup backend (Assuming backend is Node.js as well)
+      # Setup Node.js for the backend
       - name: Setup Node.js for backend
         uses: actions/setup-node@v3
         with:
-          node-version: '16'  # Specify the Node.js version for backend
+          node-version: '16'  # Adjust to your Node.js version
 
       # Install backend dependencies
       - name: Install backend dependencies
-        working-directory: ./backend  # Adjust to your backend folder
+        working-directory: ./matchify-backend
         run: npm install
 
   test:
     runs-on: ubuntu-latest  # Running on the latest Ubuntu
-    needs: setup  # This ensures tests only run after setup
+    needs: setup  # Ensure tests run after setup job completes
     steps:
       # Checkout code again for testing
       - name: Checkout code
@@ -47,15 +47,15 @@ jobs:
 
       # Run frontend tests
       - name: Run frontend tests
-        working-directory: ./frontend  # Adjust to your frontend folder
+        working-directory: ./matchify-frontend
         run: |
-          npm run test -- --ci --reporters=junit # Run frontend tests with a report output
+          npm run test -- --ci --reporters=junit # Ensure jest outputs to junit
 
       # Run backend tests
       - name: Run backend tests
-        working-directory: ./backend  # Adjust to your backend folder
+        working-directory: ./matchify-backend
         run: |
-          npm run test -- --ci --reporters=junit # Run backend tests with a report output
+          npm run test -- --ci --reporters=junit # Ensure mocha outputs to junit
 
   upload-reports:
     runs-on: ubuntu-latest
@@ -70,11 +70,12 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: frontend-test-report
-          path: ./frontend/test-reports/*.xml  # Adjust based on your testing tool output
+          path: ./frontend/test-reports/*.xml  # Path to frontend report
 
       # Upload backend test report
       - name: Upload backend test report
         uses: actions/upload-artifact@v3
         with:
           name: backend-test-report
-          path: ./backend/test-reports/*.xml  # Adjust based on your testing tool output
+          path: ./backend/test-reports/*.xml  # Path to backend report
+run-name: Auto_pilot
