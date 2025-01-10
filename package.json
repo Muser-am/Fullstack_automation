@@ -1,13 +1,20 @@
 {
   "scripts": {
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "test": "jest --ci --reporters=default --reporters=jest-junit"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.x.x",
+    "@babel/preset-react": "^7.x.x",
     "jest": "^27.5.1",
-    "jest-junit": "^16.0.0"
+    "jest-junit": "^16.0.0",
+    "babel-jest": "^27.5.1"
   },
   "jest": {
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest"
+    },
+    "testEnvironment": "jsdom",
     "reporters": [
       "default",
       [
@@ -20,8 +27,8 @@
     ]
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1"
   },
   "browserslist": {
@@ -35,6 +42,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "homepage": "./"
+  }
 }
