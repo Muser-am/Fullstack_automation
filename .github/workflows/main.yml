@@ -49,13 +49,13 @@ jobs:
       - name: Run frontend tests
         working-directory: ./matchify-frontend
         run: |
-          npm run test jest --ci --reporters=default --reporters=jest-junit # Ensure jest outputs to junit
+          npm run test jest --ci --reporters=default --reporters=jest-junit
 
       # Run backend tests
       - name: Run backend tests
         working-directory: ./matchify-backend
         run: |
-          npm run test jest --ci --reporters=default --reporters=jest-junit  # Ensure mocha outputs to junit
+          npm run test jest --ci --reporters=default --reporters=jest-junit
 
   upload-reports:
     runs-on: ubuntu-latest
