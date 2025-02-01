@@ -49,13 +49,13 @@ jobs:
       - name: Run frontend tests
         working-directory: ./matchify-frontend
         run: |
-          npm run test jest --ci --reporters=default --reporters=jest-junit
+          npm run test jest --reporters=default
 
       # Run backend tests
       - name: Run backend tests
         working-directory: ./matchify-backend
         run: |
-          npm run test jest --ci --reporters=default --reporters=jest-junit
+          npm run test jest --reporters=default
 
   upload-reports:
     runs-on: ubuntu-latest
